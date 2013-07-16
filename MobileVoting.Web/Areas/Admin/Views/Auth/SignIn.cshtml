@@ -1,0 +1,20 @@
+﻿@using MobileVoting.Web
+@model MobileVoting.Web.Areas.Admin.Models.LoginModel
+
+@{
+    ViewBag.Title = MvcApplication.Title;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(false)
+
+        <h3>Please, provide Administrator password</h3>
+        @Html.PasswordFor(p => p.Password)<br />
+        <input id="submit" type="submit" class="btn btn-large btn-primary" />
+    }
+</div>

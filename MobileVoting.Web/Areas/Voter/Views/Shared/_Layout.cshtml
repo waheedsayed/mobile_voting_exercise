@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Content/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    @Styles.Render("~/styles/voter_styles")
+</head>
+<body>
+    <div data-role="page" data-theme="b">
+        <div data-role="header">
+            @if (IsSectionDefined("Header"))
+            {
+                @RenderSection("Header")
+            }
+            else
+            {
+                <h1>@ViewBag.Title</h1>
+            }
+        </div>
+        <div data-role="content">
+            @RenderBody()
+        </div>
+    </div>
+    @Scripts.Render("~/scripts/jquery")
+    @Scripts.Render("~/scripts/jquerymobile")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+@*<script>
+    $(document).on("mobileinit", function () {
+        $.mobile.ajaxEnabled = false;
+    });
+</script>*@

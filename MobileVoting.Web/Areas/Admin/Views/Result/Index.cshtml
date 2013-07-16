@@ -1,0 +1,27 @@
+﻿@using MobileVoting.Web
+@model MobileVoting.Web.Areas.Admin.Models.ResultModel
+
+@{
+    ViewBag.Title = MvcApplication.Title;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Results for "@Model.Question"</h3>
+
+<table class="table table-condensed table-striped" style="width: 50%">
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Votes #</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vote in Model.Votes)
+        {
+            <tr>
+                <td>@vote.Key</td>
+                <td>@vote.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,49 @@
+﻿@using MobileVoting.Core.Common
+@using MobileVoting.Web
+@model MobileVoting.Web.Areas.Admin.Models.QuestionListModel
+
+@{
+    ViewBag.Title = MvcApplication.Title;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@helper DisplayQuestionList(IList<Item<int, string>> questions, bool isActiveQuestions)
+{
+    if (questions == null || questions.Count == 0)
+    {
+        return;
+    }
+
+    for (int i = 1; i <= questions.Count; i++)
+    {
+    <tr>
+        <td style="width: 40%">@i. @questions[i - 1].Value</td>
+        <td style="width: 20%">@Html.ActionLink("Results", "Result", new { id = questions[i - 1].Key })</td>
+        <td style="width: 20%">@Html.ActionLink(@isActiveQuestions ? "Deactivate" : "Activate", "ToggleActivation", new { questionId = questions[i - 1].Key, activate = !isActiveQuestions }, null)</td>
+        <td style="width: 20%">@Html.ActionLink("Edit", "Edit")</td>
+    </tr>
+    }
+}
+
+<div>
+    @Html.ActionLink("Add new question", "New", "Question")
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <table class="table table-condensed table-striped" style="width: 50%">
+        <tr>
+            <td colspan="4"><b>List active questions:</b></td>
+        </tr>
+        @DisplayQuestionList(Model.ActiveQuestions, true)
+    </table>
+    
+
+    <table class="table table-condensed table-striped" style="width: 50%">
+        <tr>
+            <td colspan="4"><b>List inactive questions:</b></td>
+        </tr>
+        @DisplayQuestionList(Model.InactiveQuestions, false)
+    </table>
+}

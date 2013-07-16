@@ -1,0 +1,101 @@
+﻿@using MobileVoting.Web
+@model MobileVoting.Web.Areas.Admin.Models.QuestionModel
+
+@{
+    ViewBag.Title = MvcApplication.Title;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Save", "Question"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="text-error">@Html.ValidationSummary(false)</div>
+
+    <div class="control-group">
+        @Html.LabelFor(p => p.Title, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(p => p.Title, new { @placeholder = "Enter question title here", @required = "required", @maxlength = "50" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(p => p.Text, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(p => p.Text, new { @placeholder = "Enter question text here", @required = "required", @maxlength = "200" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(p => p.TypeId, new { @class = "control-label" })
+        <div class="controls">
+            <input id="single" name="TypeId" value="1" type="radio" checked="checked">
+            Single choice<br />
+            <input id="multiple" name="TypeId" value="2" type="radio" />
+            Multiple choice<br />
+            <input id="ranking" name="TypeId" value="3" type="radio" />
+            Ranking<br />
+            <input id="rating" name="TypeId" value="5" type="radio" />
+            Rating
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">Number of options</div>
+        <div class="controls">
+            <input type="number" id="optionsCount" name="optionsCount" required="required" value="2" min="2" max="20" class="input-mini" />
+            <input type="hidden" id="prevOptionsCount" value="2" />
+        </div>
+    </div>
+    <div class="control-group">
+        Options
+        <div class="controls">
+            <ol id="options_bed"></ol>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+                @Html.CheckBoxFor(p => p.IsActive)
+                Activate?
+            </label>
+            <button type="submit" class="btn btn-primary" style="width: 100px">Save</button>
+            <button type="button" class="btn" onclick="history.go(-1);return false;">Cancel</button>
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // initialise option text boxes
+            addOptionTextboxes(1, 2);
+
+            // when options count change
+            $("#optionsCount").change(function () {
+                var count = parseInt($("#optionsCount").val());
+                var prev = parseInt($("#prevOptionsCount").val());
+
+                if (count === prev) return;
+
+                if (count > prev) {
+                    addOptionTextboxes(prev + 1, count);
+                }
+
+                if (prev > count) {
+                    for (var i = count + 1; i <= prev; i++) {
+                        $("#row_" + i).remove();
+                    }
+                }
+
+                $("#prevOptionsCount").val(count);
+            });
+
+            function addOptionTextboxes(fcount, lcount) {
+                for (var j = fcount; j <= lcount; j++) {
+                    $("#options_bed").append('<li id="row_' + j + '"><input type="text" id="option_' + j
+                        + '" name="Options" placeholder = "Option ' + j
+                        + ' goes here" required="required" maxlength="50" /></li>');
+                }
+            }
+        });
+    </script>
+}

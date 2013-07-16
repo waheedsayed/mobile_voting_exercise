@@ -1,0 +1,36 @@
+﻿@using MobileVoting.Core.Domain
+@model MobileVoting.Web.Areas.Voter.Models.ChoiceVoteModel
+
+@{
+    ViewBag.Title = "Vote";
+    Layout = "~/Areas/Voter/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Message</h2>
+
+@using (Html.BeginForm("Save", "Vote", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <h2>@Model.Question.Text</h2>
+    <div data-role="controlgroup">
+        @foreach (var option in Model.Question.Options)
+        {
+            string choiceType = Model.Type == TypeOfQuestion.SingleChoice ? "radio" : "checkbox";
+            <input type="@choiceType" id="option_@option.Id" value="@option.Id" name="VoteOptions" />
+            <label for="option_@option.Id">@option.Text</label>
+        }
+    </div>
+    <input type="submit" id="submit_vote" value="Vote Now" data-role="button" data-icon="check" />
+    <input type="hidden" name="QuestionId" value="@Model.Question.Id"/>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $("#VoteOptions").change(function () {
+            $('#VoteOptions').attr('required', $(this).attr("checked") ? '' : 'required');
+        });
+        $('#VoteOptions').attr('required', 'required');
+    </script>
+}
