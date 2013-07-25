@@ -29,7 +29,7 @@ namespace MobileVoting.Web
             DependencyResolver.SetResolver(new AutofacDependencyResolver(GetContainer()));
         }
 
-        private static IContainer GetContainer()
+        public static IContainer GetContainer()
         {
             var builder = new ContainerBuilder();
             // register domain types

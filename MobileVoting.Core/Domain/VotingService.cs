@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using MobileVoting.Core.Common;
 using MobileVoting.Core.Models;

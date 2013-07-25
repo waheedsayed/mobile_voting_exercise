@@ -1,0 +1,38 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Mvp.master.cs" Inherits="MobileVoting.Web.WebForms.SupervisingControllerPattern.Mvp" %>
+
+<%@ Import Namespace="System.Web.Optimization" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <title>Mobile Voting Application (MVP)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is the administration website for a mobile voting application">
+    <meta name="author" content="Wahid Shalaly">
+    <link rel="shortcut icon" href="~/Content/images/favicon.png">
+    <%: Styles.Render("~/styles/admin_styles") %>
+    <%: Scripts.Render("~/scripts/modernizr")%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand">
+                        <img src="~/Content/images/favicon.png" style="width: 32px; height: 32px" runat="server">Mobile Voting Application</a>
+                    <a href="/Admin/Auth/SignOut" class="pull-right">Sign Out</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <asp:ContentPlaceHolder ID="body" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <%: Scripts.Render("~/scripts/jquery") %>
+    <%: Scripts.Render("~/scripts/bootstrap") %>
+</body>
+</html>

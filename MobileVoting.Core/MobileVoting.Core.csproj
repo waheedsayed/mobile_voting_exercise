@@ -87,6 +87,8 @@
     <Compile Include="Models\VoteOption.cs" />
     <Compile Include="Models\VoteOptionWeight.cs" />
     <Compile Include="Common\NLogService.cs" />
+    <Compile Include="Web\IView.cs" />
+    <Compile Include="Web\IPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\VotingRepository.cs" />
   </ItemGroup>

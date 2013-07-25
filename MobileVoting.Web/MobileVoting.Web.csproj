@@ -179,6 +179,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\SupervisingControllerPattern\Models\QuestionListModel.cs" />
+    <Compile Include="WebForms\SupervisingControllerPattern\Presenters\QuestionListPresenter.cs" />
+    <Compile Include="WebForms\SupervisingControllerPattern\Mvp.Master.cs">
+      <DependentUpon>Mvp.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\SupervisingControllerPattern\Mvp.Master.designer.cs">
+      <DependentUpon>Mvp.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\SupervisingControllerPattern\Views\QuestionList\IQuestionListView.cs" />
+    <Compile Include="WebForms\SupervisingControllerPattern\Views\QuestionList\QuestionList.aspx.cs">
+      <DependentUpon>QuestionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\SupervisingControllerPattern\Views\QuestionList\QuestionList.aspx.designer.cs">
+      <DependentUpon>QuestionList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +227,7 @@
     <Content Include="Areas\Admin\Views\Auth\SignIn.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <Content Include="WebForms\SupervisingControllerPattern\Views\QuestionList\QuestionList.aspx" />
     <Content Include="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -220,6 +238,7 @@
     <Content Include="Areas\Voter\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Voter\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Result\Index.cshtml" />
+    <Content Include="WebForms\SupervisingControllerPattern\Mvp.Master" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
