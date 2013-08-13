@@ -56,6 +56,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Integration.Web, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.Web.3.1.0\lib\net40\Autofac.Integration.Web.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.0-beta1\lib\net45\EntityFramework.dll</HintPath>
@@ -149,6 +153,15 @@
     <Reference Include="WebActivatorEx">
       <HintPath>..\packages\WebActivatorEx.2.0.2\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
+    <Reference Include="WebFormsMvp">
+      <HintPath>..\packages\WebFormsMvp.1.4.1.0\lib\WebFormsMvp.dll</HintPath>
+    </Reference>
+    <Reference Include="WebFormsMvp.Autofac">
+      <HintPath>..\packages\WebFormsMvp.Autofac.1.4.1.0\lib\WebFormsMvp.Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="WebFormsMvp.Contrib.Autofac">
+      <HintPath>..\packages\WebFormsMvp.Contrib.Autofac.1.0.0.0\lib\WebFormsMvp.Contrib.Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -176,27 +189,44 @@
     <Compile Include="Areas\Voter\Models\QuestionListModel.cs" />
     <Compile Include="Areas\Voter\Models\VoteModel.cs" />
     <Compile Include="Areas\Voter\VoterAreaRegistration.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\SupervisingControllerPattern\Models\QuestionListModel.cs" />
-    <Compile Include="WebForms\SupervisingControllerPattern\Presenters\QuestionListPresenter.cs" />
-    <Compile Include="WebForms\SupervisingControllerPattern\Mvp.Master.cs">
+    <Compile Include="WebForms\Models\QuestionListModel.cs" />
+    <Compile Include="WebForms\SupervisingController\Presenters\QuestionListPresenter.cs" />
+    <Compile Include="WebForms\Mvp.Master.cs">
       <DependentUpon>Mvp.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\SupervisingControllerPattern\Mvp.Master.designer.cs">
+    <Compile Include="WebForms\Mvp.Master.designer.cs">
       <DependentUpon>Mvp.Master</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\SupervisingControllerPattern\Views\QuestionList\IQuestionListView.cs" />
-    <Compile Include="WebForms\SupervisingControllerPattern\Views\QuestionList\QuestionList.aspx.cs">
+    <Compile Include="WebForms\SupervisingController\Views\QuestionList\IQuestionListView.cs" />
+    <Compile Include="WebForms\SupervisingController\Views\QuestionList\QuestionList.aspx.cs">
       <DependentUpon>QuestionList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\SupervisingControllerPattern\Views\QuestionList\QuestionList.aspx.designer.cs">
+    <Compile Include="WebForms\SupervisingController\Views\QuestionList\QuestionList.aspx.designer.cs">
       <DependentUpon>QuestionList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForms\WebFormsMvp\Presenters\QuestionListPresenter.cs" />
+    <Compile Include="WebForms\WebFormsMvp\Views\QuestionList\IQuestionListView.cs" />
+    <Compile Include="WebForms\WebFormsMvp\Views\QuestionList\QuestionList.aspx.cs">
+      <DependentUpon>QuestionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\WebFormsMvp\Views\QuestionList\QuestionList.aspx.designer.cs">
+      <DependentUpon>QuestionList.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -221,13 +251,14 @@
     <Content Include="Content\jquery.mobile.theme-1.3.1.min.css" />
     <Content Include="Content\main.admin.css" />
     <Content Include="Content\main.voter.css" />
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\Question\New.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Auth\SignIn.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
-    <Content Include="WebForms\SupervisingControllerPattern\Views\QuestionList\QuestionList.aspx" />
+    <Content Include="WebForms\SupervisingController\Views\QuestionList\QuestionList.aspx" />
     <Content Include="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -238,7 +269,8 @@
     <Content Include="Areas\Voter\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Voter\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Result\Index.cshtml" />
-    <Content Include="WebForms\SupervisingControllerPattern\Mvp.Master" />
+    <Content Include="WebForms\Mvp.Master" />
+    <Content Include="WebForms\WebFormsMvp\Views\QuestionList\QuestionList.aspx" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

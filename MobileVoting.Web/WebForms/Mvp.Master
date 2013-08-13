@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Mvp.master.cs" Inherits="MobileVoting.Web.WebForms.SupervisingControllerPattern.Mvp" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Mvp.master.cs" Inherits="MobileVoting.Web.WebForms.Mvp" %>
 
 <%@ Import Namespace="System.Web.Optimization" %>
 

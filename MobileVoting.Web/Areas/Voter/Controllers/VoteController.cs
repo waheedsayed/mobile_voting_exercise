@@ -47,9 +47,9 @@ namespace MobileVoting.Web.Areas.Voter.Controllers
             if (!_votingService.SaveVote(model.QuestionId, model.VoteOptions))
                 return RedirectToAction("Index", "Error");
 
-            var previousVotes = Session[MvcApplication.PreviousVotesKey] as List<int> ?? new List<int>();
+            var previousVotes = Session[Constants.PreviousVotesKey] as List<int> ?? new List<int>();
             previousVotes.Add(model.QuestionId);
-            Session[MvcApplication.PreviousVotesKey] = previousVotes;
+            Session[Constants.PreviousVotesKey] = previousVotes;
             return RedirectToAction("Index", "Home");
         }
     }

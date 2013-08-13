@@ -25,7 +25,7 @@ namespace MobileVoting.Web.UnitTests.VoterArea
         [TestFixtureSetUp]
         public void EstablishContext()
         {
-            _session[MvcApplication.PreviousVotesKey].Returns(null);
+            _session[Constants.PreviousVotesKey].Returns(null);
             _httpContext.Session.Returns(_session);
             _context.HttpContext.Returns(_httpContext);
             _controller = new HomeController(_votingService) { ControllerContext = _context };
@@ -59,7 +59,7 @@ namespace MobileVoting.Web.UnitTests.VoterArea
                 new Item<int, string> { Key = 102, Value = "Second Question" }
              };
             var expectedModel = new QuestionListModel { Questions = filteredQuestions, NoMoreVotes = false };
-            _session[MvcApplication.PreviousVotesKey].Returns(new List<int> { 101 });
+            _session[Constants.PreviousVotesKey].Returns(new List<int> { 101 });
             _votingService.GetActiveQuestions().Returns(activeQuestions);
 
             _controller.WithCallTo(c => c.Index()).ShouldRenderDefaultView()
@@ -75,7 +75,7 @@ namespace MobileVoting.Web.UnitTests.VoterArea
              };
             var filteredQuestions = new List<Item<int, string>>();
             var expectedModel = new QuestionListModel { Questions = filteredQuestions, NoMoreVotes = true };
-            _session[MvcApplication.PreviousVotesKey].Returns(new List<int> { 101, 102 });
+            _session[Constants.PreviousVotesKey].Returns(new List<int> { 101, 102 });
             _votingService.GetActiveQuestions().Returns(activeQuestions);
 
             _controller.WithCallTo(c => c.Index()).ShouldRenderDefaultView()

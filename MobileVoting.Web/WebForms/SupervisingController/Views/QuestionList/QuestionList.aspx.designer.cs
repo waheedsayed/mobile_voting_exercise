@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MobileVoting.Web.WebForms.SupervisingControllerPattern.Views.QuestionList {
+namespace MobileVoting.Web.WebForms.SupervisingController.Views.QuestionList {
     
     
     public partial class QuestionList {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MobileVoting.Web.WebForms.SupervisingControllerPattern.Models
+namespace MobileVoting.Web.WebForms.Models
 {
     public class QuestionListModel
     {

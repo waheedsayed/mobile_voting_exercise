@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="../../Mvp.Master" AutoEventWireup="true" CodeBehind="QuestionList.aspx.cs" Inherits="MobileVoting.Web.WebForms.SupervisingControllerPattern.Views.QuestionList.QuestionList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../../../Mvp.Master" AutoEventWireup="true" CodeBehind="QuestionList.aspx.cs" Inherits="MobileVoting.Web.WebForms.SupervisingController.Views.QuestionList.QuestionList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -7,7 +7,7 @@
     <div>
         <fieldset>
             <legend>Active Questions</legend>
-            <asp:GridView ID="ActiveQuestionsGrid" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" ItemType="MobileVoting.Web.WebForms.SupervisingControllerPattern.Models.QuestionModel">
+            <asp:GridView ID="ActiveQuestionsGrid" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" ItemType="MobileVoting.Web.WebForms.Models.QuestionModel">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" />
@@ -36,7 +36,7 @@
     <div>
         <fieldset>
             <legend>Inactive Questions</legend>
-            <asp:GridView ID="InactiveQuestionsGrid" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" ItemType="MobileVoting.Web.WebForms.SupervisingControllerPattern.Models.QuestionModel">
+            <asp:GridView ID="InactiveQuestionsGrid" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" ItemType="MobileVoting.Web.WebForms.Models.QuestionModel">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" />

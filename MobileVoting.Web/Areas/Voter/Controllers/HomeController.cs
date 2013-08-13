@@ -17,7 +17,7 @@ namespace MobileVoting.Web.Areas.Voter.Controllers
 
         public ActionResult Index()
         {
-            var previousVotes = Session[MvcApplication.PreviousVotesKey] as List<int> ?? new List<int>();
+            var previousVotes = Session[Constants.PreviousVotesKey] as List<int> ?? new List<int>();
             var activeQuestions = _votingService.GetActiveQuestions();
 
             if (activeQuestions == null)

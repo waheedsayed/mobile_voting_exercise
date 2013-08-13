@@ -1,28 +1,23 @@
 ﻿using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Autofac;
-using MobileVoting.Core.Domain;
-using MobileVoting.Web.WebForms.SupervisingControllerPattern.Models;
-using MobileVoting.Web.WebForms.SupervisingControllerPattern.Presenters;
+using MobileVoting.Web.WebForms.Models;
+using MobileVoting.Web.WebForms.SupervisingController.Presenters;
 
-namespace MobileVoting.Web.WebForms.SupervisingControllerPattern.Views.QuestionList
+namespace MobileVoting.Web.WebForms.SupervisingController.Views.QuestionList
 {
     public partial class QuestionList : Page, IQuestionListView
     {
-        private readonly QuestionListPresenter _presenter;
-
-        public QuestionList()
-        {
-            var container = MvcApplication.GetContainer();
-            var votingService = container.Resolve<IVotingService>();
-            _presenter = new QuestionListPresenter(this, votingService);
-        }
+        public IQuestionListPresenter Presenter { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-                _presenter.Init();
+            Presenter.AttachToView(this);
+
+            if (IsPostBack) return;
+
+            Presenter.LoadQuestions();
+            BindQuestionGridViews();
         }
 
         public QuestionListModel Model { get; set; }
@@ -43,14 +38,16 @@ namespace MobileVoting.Web.WebForms.SupervisingControllerPattern.Views.QuestionL
             switch (e.CommandName)
             {
                 case "Deactivate":
-                    _presenter.Deactivate(questionId);
+                    Presenter.Deactivate(questionId);
                     break;
                 case "Activate":
-                    _presenter.Activate(questionId);
+                    Presenter.Activate(questionId);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            BindQuestionGridViews();
         }
     }
 }

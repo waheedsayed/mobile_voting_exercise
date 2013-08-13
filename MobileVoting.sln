@@ -8,21 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileVoting.Web.UnitTests", "MobileVoting.Web.UnitTests\MobileVoting.Web.UnitTests.csproj", "{F3CA0C87-615C-471D-8623-527A14E50C1E}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://thinkinuous.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = MobileVoting.Core\\MobileVoting.Core.csproj
-		SccProjectName1 = MobileVoting.Core
-		SccLocalPath1 = MobileVoting.Core
-		SccProjectUniqueName2 = MobileVoting.Web\\MobileVoting.Web.csproj
-		SccProjectName2 = MobileVoting.Web
-		SccLocalPath2 = MobileVoting.Web
-		SccProjectUniqueName3 = MobileVoting.Web.UnitTests\\MobileVoting.Web.UnitTests.csproj
-		SccProjectName3 = MobileVoting.Web.UnitTests
-		SccLocalPath3 = MobileVoting.Web.UnitTests
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

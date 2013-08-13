@@ -1,40 +1,49 @@
 ﻿using System.Linq;
 using MobileVoting.Core.Domain;
 using MobileVoting.Core.Web;
-using MobileVoting.Web.WebForms.SupervisingControllerPattern.Models;
-using MobileVoting.Web.WebForms.SupervisingControllerPattern.Views.QuestionList;
+using MobileVoting.Web.WebForms.Models;
+using MobileVoting.Web.WebForms.SupervisingController.Views.QuestionList;
 
-namespace MobileVoting.Web.WebForms.SupervisingControllerPattern.Presenters
+namespace MobileVoting.Web.WebForms.SupervisingController.Presenters
 {
-    public class QuestionListPresenter : IPresenter<IQuestionListView, QuestionListModel>
+    public interface IQuestionListPresenter : IPresenter<IQuestionListView, QuestionListModel>
+    {
+        void LoadQuestions();
+        void Deactivate(int questionId);
+        void Activate(int questionId);
+    }
+
+    public class QuestionListPresenter : IQuestionListPresenter
     {
         private readonly IVotingService _votingService;
-        private readonly IQuestionListView _view;
 
-        public QuestionListPresenter(IQuestionListView view, IVotingService votingService)
+        private IQuestionListView _view;
+
+        public QuestionListPresenter(IVotingService votingService)
         {
-            _view = view;
             _votingService = votingService;
         }
 
-        public void Init()
+        public void AttachToView(IView<QuestionListModel> view)
+        {
+            _view = (IQuestionListView)view;
+        }
+
+        public void LoadQuestions()
         {
             _view.Model = LoadModel();
-            _view.BindQuestionGridViews();
         }
 
         public void Deactivate(int questionId)
         {
             _votingService.DeactivateQuestion(questionId);
             _view.Model = LoadModel();
-            _view.BindQuestionGridViews();
         }
 
         public void Activate(int questionId)
         {
             _votingService.ActivateQuestion(questionId);
             _view.Model = LoadModel();
-            _view.BindQuestionGridViews();
         }
 
         private QuestionListModel LoadModel()

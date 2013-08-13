@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.UI;
 
-namespace MobileVoting.Web.WebForms.SupervisingControllerPattern
+namespace MobileVoting.Web.WebForms
 {
     public partial class Mvp : MasterPage
     {

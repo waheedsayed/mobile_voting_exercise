@@ -4,6 +4,6 @@
         where TView : IView<TModel>
         where TModel : class, new()
     {
-        void Init();
+        void AttachToView(IView<TModel> view);
     }
 }

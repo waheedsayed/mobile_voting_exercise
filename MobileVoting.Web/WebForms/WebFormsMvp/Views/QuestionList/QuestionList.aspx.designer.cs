@@ -7,36 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MobileVoting.Web.WebForms.SupervisingControllerPattern {
+namespace MobileVoting.Web.WebForms.WebFormsMvp.Views.QuestionList {
     
     
-    public partial class Mvp {
+    public partial class QuestionList {
         
         /// <summary>
-        /// head control.
+        /// ActiveQuestionsGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.GridView ActiveQuestionsGrid;
         
         /// <summary>
-        /// form1 control.
+        /// InactiveQuestionsGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// body control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder body;
+        protected global::System.Web.UI.WebControls.GridView InactiveQuestionsGrid;
     }
 }
