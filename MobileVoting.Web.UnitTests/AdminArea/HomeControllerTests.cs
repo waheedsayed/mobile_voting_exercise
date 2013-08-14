@@ -9,10 +9,9 @@ namespace MobileVoting.Web.UnitTests.AdminArea
     [TestFixture]
     public class HomeControllerTests
     {
-        HomeController _controller;
+        private readonly HomeController _controller;
 
-        [TestFixtureSetUp]
-        public void EstablishContext()
+        public HomeControllerTests()
         {
             var votingService = Substitute.For<IVotingService>();
             _controller = new HomeController(votingService);

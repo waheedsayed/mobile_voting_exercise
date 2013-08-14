@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
-using MobileVoting.Core.Common;
 using MobileVoting.Core.Domain;
+using MobileVoting.Core.Projections;
 using MobileVoting.Web.Areas.Voter.Controllers;
 using MobileVoting.Web.Areas.Voter.Models;
 using MobileVoting.Web.UnitTests.Helpers;
@@ -40,7 +40,7 @@ namespace MobileVoting.Web.UnitTests.VoterArea
         [Test]
         public void Index_WhenThereAreActiveQuestions_RendersActiveQuestions()
         {
-            var activeQuestions = new List<Item<int, string>> { new Item<int, string> { Key = 101, Value = "First Question" } };
+            var activeQuestions = new List<QuestionDto> { new QuestionDto { Id = 101, Title = "First Question" } };
             var expectedModel = new QuestionListModel { Questions = activeQuestions, NoMoreVotes = false };
             _votingService.GetActiveQuestions().Returns(activeQuestions);
 
@@ -51,12 +51,12 @@ namespace MobileVoting.Web.UnitTests.VoterArea
         [Test]
         public void Index_WhenThereArePreviousVotes_RendersFilteredQuestions()
         {
-            var activeQuestions = new List<Item<int, string>> {
-                new Item<int, string> { Key = 101, Value = "First Question" },
-                new Item<int, string> { Key = 102, Value = "Second Question" }
+            var activeQuestions = new List<QuestionDto> {
+                new QuestionDto { Id = 101, Title = "First Question" },
+                new QuestionDto { Id = 102, Title = "Second Question" }
              };
-            var filteredQuestions = new List<Item<int, string>> {
-                new Item<int, string> { Key = 102, Value = "Second Question" }
+            var filteredQuestions = new List<QuestionDto> {
+                new QuestionDto { Id = 102, Title = "Second Question" }
              };
             var expectedModel = new QuestionListModel { Questions = filteredQuestions, NoMoreVotes = false };
             _session[Constants.PreviousVotesKey].Returns(new List<int> { 101 });
@@ -69,11 +69,11 @@ namespace MobileVoting.Web.UnitTests.VoterArea
         [Test]
         public void Index_WhenThereAreNoMoreQuestions_RendersNoQuestions()
         {
-            var activeQuestions = new List<Item<int, string>> {
-                new Item<int, string> { Key = 101, Value = "First Question" },
-                new Item<int, string> { Key = 102, Value = "Second Question" }
+            var activeQuestions = new List<QuestionDto> {
+                new QuestionDto { Id = 101, Title = "First Question" },
+                new QuestionDto { Id = 102, Title = "Second Question" }
              };
-            var filteredQuestions = new List<Item<int, string>>();
+            var filteredQuestions = new List<QuestionDto>();
             var expectedModel = new QuestionListModel { Questions = filteredQuestions, NoMoreVotes = true };
             _session[Constants.PreviousVotesKey].Returns(new List<int> { 101, 102 });
             _votingService.GetActiveQuestions().Returns(activeQuestions);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Web.UI.WebControls;
 using MobileVoting.Core.Domain;
 using MobileVoting.Web.WebForms.Models;
@@ -43,13 +42,13 @@ namespace MobileVoting.Web.WebForms.WebFormsMvp.Presenters
             }
         }
 
-        public void Deactivate(int questionId)
+        private void Deactivate(int questionId)
         {
             _votingService.DeactivateQuestion(questionId);
             View.Model = LoadModel();
         }
 
-        public void Activate(int questionId)
+        private void Activate(int questionId)
         {
             _votingService.ActivateQuestion(questionId);
             View.Model = LoadModel();
@@ -58,8 +57,8 @@ namespace MobileVoting.Web.WebForms.WebFormsMvp.Presenters
         private QuestionListModel LoadModel()
         {
             return new QuestionListModel {
-                ActiveQuestions = _votingService.GetActiveQuestions().Select(q => new QuestionModel { Id = q.Key, Title = q.Value }).ToList(),
-                InactiveQuestions = _votingService.GetInactiveQuestions().Select(q => new QuestionModel { Id = q.Key, Title = q.Value }).ToList()
+                ActiveQuestions = _votingService.GetActiveQuestions(),
+                InactiveQuestions = _votingService.GetInactiveQuestions()
             };
         }
     }

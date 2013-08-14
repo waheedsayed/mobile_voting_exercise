@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using MobileVoting.Core.Domain;
+﻿using MobileVoting.Core.Domain;
 using MobileVoting.Core.Web;
 using MobileVoting.Web.WebForms.Models;
 using MobileVoting.Web.WebForms.SupervisingController.Views.QuestionList;
@@ -49,8 +48,8 @@ namespace MobileVoting.Web.WebForms.SupervisingController.Presenters
         private QuestionListModel LoadModel()
         {
             return new QuestionListModel {
-                ActiveQuestions = _votingService.GetActiveQuestions().Select(q => new QuestionModel { Id = q.Key, Title = q.Value }).ToList(),
-                InactiveQuestions = _votingService.GetInactiveQuestions().Select(q => new QuestionModel { Id = q.Key, Title = q.Value }).ToList()
+                ActiveQuestions = _votingService.GetActiveQuestions(),
+                InactiveQuestions = _votingService.GetInactiveQuestions()
             };
         }
     }

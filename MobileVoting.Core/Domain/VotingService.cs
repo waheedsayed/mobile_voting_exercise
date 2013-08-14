@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MobileVoting.Core.Common;
 using MobileVoting.Core.Models;
+using MobileVoting.Core.Projections;
 using MobileVoting.Core.Repositories;
 
 namespace MobileVoting.Core.Domain
@@ -9,8 +10,8 @@ namespace MobileVoting.Core.Domain
     public interface IVotingService
     {
         int CreateQuestion(string title, string text, bool isActive, TypeOfQuestion type, params string[] options);
-        IList<Item<int, string>> GetActiveQuestions();
-        IList<Item<int, string>> GetInactiveQuestions();
+        IList<QuestionDto> GetActiveQuestions();
+        IList<QuestionDto> GetInactiveQuestions();
         bool ActivateQuestion(int questionId);
         bool DeactivateQuestion(int questionId);
         Question GetQuestion(int questionId);
@@ -44,7 +45,7 @@ namespace MobileVoting.Core.Domain
             }
         }
 
-        public IList<Item<int, string>> GetActiveQuestions()
+        public IList<QuestionDto> GetActiveQuestions()
         {
             try
             {
@@ -57,7 +58,7 @@ namespace MobileVoting.Core.Domain
             }
         }
 
-        public IList<Item<int, string>> GetInactiveQuestions()
+        public IList<QuestionDto> GetInactiveQuestions()
         {
             try
             {

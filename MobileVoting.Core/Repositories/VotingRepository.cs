@@ -4,14 +4,15 @@ using System.Linq;
 using MobileVoting.Core.Common;
 using MobileVoting.Core.Domain;
 using MobileVoting.Core.Models;
+using MobileVoting.Core.Projections;
 
 namespace MobileVoting.Core.Repositories
 {
     public interface IVotingRepository
     {
         int CreateQuestion(string title, string text, TypeOfQuestion type, bool isActive, params string[] options);
-        IList<Item<int, string>> GetActiveQuestions();
-        IList<Item<int, string>> GetInctiveQuestions();
+        IList<QuestionDto> GetActiveQuestions();
+        IList<QuestionDto> GetInctiveQuestions();
         void ActivateQuestion(int questionId);
         void DeactivateQuestion(int questionId);
         Question GetQuestion(int id);
@@ -46,25 +47,25 @@ namespace MobileVoting.Core.Repositories
             }
         }
 
-        public IList<Item<int, string>> GetActiveQuestions()
+        public IList<QuestionDto> GetActiveQuestions()
         {
             using (var context = _contextProvider.GetMobileVotingDbContext())
             {
                 return (from q in context.Questions
                         where q.IsActive
                         orderby q.DateCreated descending
-                        select new Item<int, string> { Key = q.Id, Value = q.Title }).ToList();
+                        select new QuestionDto { Id = q.Id, Title = q.Title }).ToList();
             }
         }
 
-        public IList<Item<int, string>> GetInctiveQuestions()
+        public IList<QuestionDto> GetInctiveQuestions()
         {
             using (var context = _contextProvider.GetMobileVotingDbContext())
             {
                 return (from q in context.Questions
                         where !q.IsActive
                         orderby q.DateCreated descending
-                        select new Item<int, string> { Key = q.Id, Value = q.Title }).ToList();
+                        select new QuestionDto { Id = q.Id, Title = q.Title }).ToList();
             }
         }
 

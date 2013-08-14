@@ -83,12 +83,17 @@
     <Reference Include="TestStack.FluentMVCTesting">
       <HintPath>..\packages\TestStack.FluentMVCTesting.1.0.9\lib\NET40\TestStack.FluentMVCTesting.dll</HintPath>
     </Reference>
+    <Reference Include="WebFormsMvp, Version=1.4.1.0, Culture=neutral, PublicKeyToken=537f18701145dff0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebFormsMvp.1.4.1.0\lib\WebFormsMvp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminArea\HomeControllerTests.cs" />
     <Compile Include="Helpers\JsonBasedComparer.cs" />
     <Compile Include="VoterArea\HomeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForms\WebFormsMVP\QuestionListPresenterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileVoting.Core\MobileVoting.Core.csproj">

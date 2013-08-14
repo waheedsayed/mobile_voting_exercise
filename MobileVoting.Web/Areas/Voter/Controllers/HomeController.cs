@@ -27,7 +27,7 @@ namespace MobileVoting.Web.Areas.Voter.Controllers
 
             if (activeQuestions.Count > 0 && previousVotes.Count > 0)
             {
-                var filteredQuestions = activeQuestions.Where(v => !previousVotes.Contains(v.Key)).ToList();
+                var filteredQuestions = activeQuestions.Where(v => !previousVotes.Contains(v.Id)).ToList();
                 model.Questions = filteredQuestions;
                 model.NoMoreVotes = filteredQuestions.Count == 0;
             }

@@ -64,6 +64,7 @@
     <Compile Include="Common\Item.cs" />
     <Compile Include="CoreInjectionModule.cs" />
     <Compile Include="Domain\VoteResult.cs" />
+    <Compile Include="Projections\QuestionDto.cs" />
     <Compile Include="Helpers\VoteGenerator.cs" />
     <Compile Include="Migrations\201307091250516_InitialStructureAndSeedData.cs" />
     <Compile Include="Migrations\201307091250516_InitialStructureAndSeedData.Designer.cs">

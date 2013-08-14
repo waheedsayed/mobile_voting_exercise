@@ -1,16 +1,11 @@
 ﻿using System.Collections.Generic;
+using MobileVoting.Core.Projections;
 
 namespace MobileVoting.Web.WebForms.Models
 {
     public class QuestionListModel
     {
-        public IList<QuestionModel> ActiveQuestions { get; set; }
-        public IList<QuestionModel> InactiveQuestions { get; set; }
-    }
-
-    public class QuestionModel
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
+        public IList<QuestionDto> ActiveQuestions { get; set; }
+        public IList<QuestionDto> InactiveQuestions { get; set; }
     }
 }

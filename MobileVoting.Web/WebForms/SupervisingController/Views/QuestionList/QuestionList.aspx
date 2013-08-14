@@ -7,7 +7,7 @@
     <div>
         <fieldset>
             <legend>Active Questions</legend>
-            <asp:GridView ID="ActiveQuestionsGrid" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" ItemType="MobileVoting.Web.WebForms.Models.QuestionModel">
+            <asp:GridView ID="ActiveQuestionsGrid" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" ItemType="MobileVoting.Core.Projections.QuestionDto">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" />
@@ -36,7 +36,7 @@
     <div>
         <fieldset>
             <legend>Inactive Questions</legend>
-            <asp:GridView ID="InactiveQuestionsGrid" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" ItemType="MobileVoting.Web.WebForms.Models.QuestionModel">
+            <asp:GridView ID="InactiveQuestionsGrid" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" ItemType="MobileVoting.Core.Projections.QuestionDto">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" />
